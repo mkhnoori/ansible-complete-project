@@ -12,5 +12,5 @@ all:
           ansible_host: 192.168.33.12
     db_servers:
       hosts:
-        db1:
+        db01:
           ansible_host: 192.168.33.13

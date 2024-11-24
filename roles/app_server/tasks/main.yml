@@ -8,8 +8,8 @@
   template:
     src: index.html.j2
     dest: /var/www/html/index.html
-    owner: www.data
-    group: www.data
+    owner: www-data
+    group: www-data
     mode: 0644
 
 - name: start and enable Nginx

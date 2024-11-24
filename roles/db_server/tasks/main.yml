@@ -1,0 +1,31 @@
+---
+- name: install MySQL
+  apt:
+    name: mysql-server
+    state: present
+
+- name: configure MySQL
+  copy:
+    src: my.cnf
+    dest: /etc/mysql/my.cnf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: restart MySQL
+  service:
+    name: mysql
+    state: restarted
+    enabled: true
+
+- name: create application database
+  mysql_db:
+    name: app_db
+    state: present
+
+- name: create application user
+  mysql_user:
+    name: app_user
+    password: app_password
+    priv: "app_db.*:ALL"
+    state: present

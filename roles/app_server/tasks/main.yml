@@ -1,0 +1,19 @@
+---
+- name: install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: deploy application
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: www.data
+    group: www.data
+    mode: 0644
+
+- name: start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true

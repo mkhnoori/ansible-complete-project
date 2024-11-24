@@ -19,5 +19,5 @@ frontend http_front
 
 backend http_back
     {% for host in groups['app_servers'] %}
-        server {{hostvars[host]['inventory_hostname'] }} {{hostvars[host]['ansible_host'] }}:80 check
+        server {{ hostvars[host]['inventory_hostname'] }} {{ hostvars[host]['ansible_host'] }}:80 check
     {% endfor %}

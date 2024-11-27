@@ -14,10 +14,10 @@ defaults
     timeout server 50000ms
 
 frontend http_front
-    bind *:80
+    bind *:8080
     default_backend http_back
 
 backend http_back
     {% for host in groups['app_servers'] %}
-        server {{hostvars[host]['inventory_hostname'] }} {{hostvars[host]['ansible_host'] }}:80 check
+        server {{ hostvars[host]['inventory_hostname'] }} {{ hostvars[host]['ansible_host'] }}:80 check
     {% endfor %}
